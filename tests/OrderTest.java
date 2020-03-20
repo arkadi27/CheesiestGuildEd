@@ -13,7 +13,7 @@ class OrderTest {
 
         // since 0 lbs of cheese was left EOW, the expected order quantity should be 15 lbs
         // previous week leftover cheese qty should be ignored
-        assertEquals(orderedCheeseQty, 15.00);
+        assertEquals(15.00, orderedCheeseQty);
     }
 
     @Test
@@ -23,7 +23,7 @@ class OrderTest {
 
         // since 1-10 lbs of cheese was left EOW, the expected order quantity should be 5 lbs
         // previous week leftover cheese qty should be ignored
-        assertEquals(orderedCheeseQty, 5.00);
+        assertEquals(5.00, orderedCheeseQty);
     }
 
     @Test
@@ -33,7 +33,7 @@ class OrderTest {
 
         // since more than 10 lbs of cheese was left EOW, and 7 lbs was left the previous week
         // the expected order qty should be 2 lbs (7-5=2)
-        assertEquals(orderedCheeseQty, 2.00);
+        assertEquals(2.00, orderedCheeseQty);
     }
 
     @Test
@@ -43,11 +43,11 @@ class OrderTest {
 
         // when negative values are used for eow or previous week leftover
         // the expected order qty should be 0 lb
-        assertEquals(orderedCheeseQty, 0.00);
+        assertEquals(0.00, orderedCheeseQty);
 
         // for this case, since order qty = previousWeekLeftOver - 5,
         // it will result in 2-5=-3; since we have a negative value, we shouldn't order anything
         orderedCheeseQty = myOrder.submitOrder(12, 2);
-        assertEquals(orderedCheeseQty, 0.00);
+        assertEquals(0.00, orderedCheeseQty);
     }
 }
